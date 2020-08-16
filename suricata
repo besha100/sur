@@ -1,0 +1,16 @@
+/var/log/suricata/eve.json
+/var/log/suricata/fast.log
+/var/log/suricata/stats.log
+/var/log/suricata/suricata-start.log
+/var/log/suricata/suricata.log
+{
+    compress
+    daily
+    rotate 3
+    notifempty
+    missingok
+    sharedscripts
+    postrotate
+            /bin/kill -HUP `cat /var/run/suricata.pid 2>/dev/null` 2>/dev/null || true
+    endscript
+}
